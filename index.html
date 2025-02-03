@@ -4,7 +4,7 @@
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
   <title>MCG G10 - 2024 3rd Term Test E-Report</title>
-  <link href="https://fonts.googleapis.com/css2?family=Montserrat:wght@400;600;800&family=Poppins:wght@300;400;600;700&display=swap" rel="stylesheet">
+  <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@300;400;600;700&family=Playfair+Display:wght@700&display=swap" rel="stylesheet">
   <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0/css/all.min.css">
   <style>
     * {
@@ -28,9 +28,9 @@
 
     header {
       text-align: center;
-      background: linear-gradient(135deg, #2c3e50, #daa520);
-      color: white;
-      padding: 3rem 0;
+      background: linear-gradient(135deg, #FFD700, #FFD700);
+      color: rgb(0, 0, 0);
+      padding: 2rem 0;
       box-shadow: 0 4px 15px rgba(0,0,0,0.1);
       position: relative;
       overflow: hidden;
@@ -55,7 +55,7 @@
 
     .school-logo {
       position: absolute;
-      top: 1rem;
+      top: 5.5rem;
       left: 1rem;
       width: 60px;
       height: 60px;
@@ -74,21 +74,18 @@
     }
 
     header h1 {
-      font-family: 'Montserrat', sans-serif;
-      font-weight: 800;
-      font-size: 2.8rem;
+      font-family: 'Playfair Display', serif;
+      font-size: 2rem;
       margin-bottom: 0.5rem;
       letter-spacing: 1px;
       position: relative;
-      text-shadow: 2px 2px 4px rgba(0,0,0,0.3);
-      color: #ffd700;
+      text-shadow: 2px 2px 4px rgba(0,0,0,0.1);
     }
 
     header p {
       font-size: 1.2rem;
       opacity: 0.9;
       position: relative;
-      color: #fff;
     }
 
     main {
@@ -138,7 +135,7 @@
       padding: 1rem 1.5rem;
       font-size: 1.1rem;
       width: 300px;
-      border: 2px solid #daa520;
+      border: 2px solid #dfe6e9;
       border-radius: 50px;
       transition: all 0.3s ease;
       background: white;
@@ -146,16 +143,16 @@
     }
 
     #admission-number:focus {
-      border-color: #b8860b;
-      box-shadow: 0 4px 15px rgba(218,165,32,0.2);
+      border-color: #3498db;
+      box-shadow: 0 4px 15px rgba(52,152,219,0.2);
       outline: none;
     }
 
     #search-btn {
       padding: 1rem 2rem;
       font-size: 1.1rem;
-      background: linear-gradient(135deg, #daa520, #b8860b);
-      color: #2c3e50;
+      background: linear-gradient(135deg, #000508, #000001);
+      color: white;
       border: none;
       border-radius: 50px;
       cursor: pointer;
@@ -164,13 +161,12 @@
       display: flex;
       align-items: center;
       gap: 0.5rem;
-      font-weight: 600;
     }
 
     #search-btn:hover {
       transform: translateY(-2px);
       box-shadow: 0 6px 12px rgba(0,0,0,0.15);
-      background: linear-gradient(135deg, #b8860b, #daa520);
+      background: linear-gradient(135deg, #2980b9, #3498db);
     }
 
     #report-section {
@@ -200,7 +196,7 @@
       left: 0;
       width: 100%;
       height: 5px;
-      background: linear-gradient(90deg, #daa520, #ffd700, #2c3e50, #b8860b);
+      background: linear-gradient(90deg, #3498db, #2ecc71, #e74c3c, #f1c40f);
     }
 
     #student-info {
@@ -218,9 +214,8 @@
       text-align: center;
       padding: 1.5rem;
       border-radius: 15px;
-      background: linear-gradient(135deg, #fff, #f8f9fa);
+      background: linear-gradient(135deg, #f8f9fa, #ffffff);
       transition: transform 0.3s ease;
-      border: 2px solid #daa520;
     }
 
     .info-card:hover {
@@ -228,21 +223,20 @@
     }
 
     .info-card h3 {
-      color: #2c3e50;
+      color: #3498db;
       margin-bottom: 0.5rem;
       font-size: 1.1rem;
-      font-family: 'Montserrat', sans-serif;
     }
 
     .info-card p {
-      font-size: 1.8rem;
-      font-weight: 800;
-      color: #daa520;
-      text-shadow: 1px 1px 2px rgba(0,0,0,0.1);
+      font-size: 1.4rem;
+      font-weight: 600;
+      color: #2c3e50;
     }
 
     #place-rank {
-      color: #b8860b;
+      color: #e74c3c;
+      font-weight: 700;
     }
 
     .grade-badge {
@@ -255,14 +249,33 @@
       background: #f1f2f6;
     }
 
-    .designer-credit {
-      background: white;
-      color: #2c3e50;
+    .grade-badge i {
+      margin-right: 0.5rem;
+    }
+
+    .marks-display {
+      display: flex;
+      flex-wrap: wrap;
+      gap: 1rem;
+      justify-content: center;
+      margin-top: 1rem;
+    }
+
+    .marks-display span {
+      background: #3498db;
+      color: white;
+      padding: 0.5rem 1rem;
+      border-radius: 25px;
+      font-weight: 600;
+    }
+
+    footer {
       text-align: center;
       padding: 1.5rem;
-      font-weight: 600;
-      border-top: 3px solid #daa520;
-      margin-top: 2rem;
+      background: #e9f0f6;
+      color: rgb(14, 1, 1);
+      margin-top: 3rem;
+      position: relative;
     }
 
     @media (max-width: 768px) {
@@ -283,9 +296,9 @@
 <body>
   <header>
     <div class="school-logo">
-      <img src="https://via.placeholder.com/150" alt="School Logo">
+      <img src="https://i.ibb.co/kqw53KT/mcglogo.png" alt="School Logo">
     </div>
-    <h1>MCG G10 - 2024 3rd Term Test E-Report</h1>
+    <h1>MCG G10 - 2024 3rd Term Test <br> E-Report</h1>
     <p>Class Teacher: Mrs. S.T. Indrani</p>
   </header>
 
@@ -298,7 +311,7 @@
         <div class="search-input-group">
           <input type="text" id="admission-number" placeholder="Enter Admission Number...">
           <button id="search-btn">
-            <i class="fas fa-chart-line"></i> Generate Report
+            <i class="fas fa-chart-line"></i> View Report
           </button>
         </div>
       </div>
@@ -310,35 +323,35 @@
       </div>
       <div id="student-info">
         <div class="info-card">
-          <h3><i class="fas fa-user-tag"></i> Student Name</h3>
+          <h3><i class="fas fa-user-graduate"></i> Student Name</h3>
           <p id="student-name">-</p>
+          <p id="total-marks-display" style="font-size: 1.2rem; color: #3498db;">Total Marks: -</p>
         </div>
         <div class="info-card">
-          <h3><i class="fas fa-trophy"></i> Total Marks</h3>
-          <p id="total-marks-display">-</p>
-        </div>
-        <div class="info-card">
-          <h3><i class="fas fa-medal"></i> Current Rank</h3>
+          <h3><i class="fas fa-star"></i> Current Rank</h3>
           <p id="place-rank">-</p>
         </div>
         <div class="info-card">
-          <h3><i class="fas fa-percent"></i> Average Score</h3>
+          <h3><i class="fas fa-percentage"></i> Average Score</h3>
           <p id="average-marks">-</p>
+        </div>
+        <div class="info-card">
+          <h3><i class="fas fa-chart-pie"></i> Grade Distribution</h3>
+          <div id="grade-breakdown"></div>
         </div>
       </div>
       <div class="marks-display" id="marks-display"></div>
     </section>
   </main>
 
-  <div class="designer-credit">
-    Designed By - Thisum Jalitha ©
-  </div>
+  <footer>
+    <p>&copy; Design by - Thisum Jalitha</p>
+  </footer>
 
   <script src="https://cdn.jsdelivr.net/npm/chart.js"></script>
   <script src="https://cdn.jsdelivr.net/npm/chartjs-plugin-annotation@2.0.1"></script>
   <script>
     const studentsData = {
-    
   "6664": {
     "name": "R.B. GUNASEKARA",
     "marks": [59, 70, 67, 73, 70, 63, 71, 80, 58],
@@ -604,11 +617,31 @@
         const totalMarks = student.marks.reduce((a, b) => a + b, 0);
         const averageMarks = (totalMarks / student.marks.length).toFixed(2);
 
+        // Update student info
         document.getElementById("student-name").textContent = student.name;
-        document.getElementById("total-marks-display").textContent = totalMarks;
+        document.getElementById("total-marks-display").textContent = `Total Marks: ${totalMarks}`;
         document.getElementById("place-rank").textContent = `#${student.place}`;
         document.getElementById("average-marks").textContent = `${averageMarks}%`;
 
+        // Update grade breakdown
+        const gradeBreakdown = calculateGradeBreakdown(student.marks);
+        const gradeBadges = Object.entries(gradeBreakdown)
+          .filter(([grade, count]) => count > 0)
+          .map(([grade, count]) => `
+            <span class="grade-badge grade-${grade}">
+              <i class="fas fa-certificate"></i>
+              ${grade}: ${count}
+            </span>`
+          ).join('');
+        document.getElementById("grade-breakdown").innerHTML = gradeBadges;
+
+        // Update marks display
+        const marksDisplay = student.subjects.map((subject, index) => `
+          <span>${subject}: ${student.marks[index]}</span>
+        `).join('');
+        document.getElementById("marks-display").innerHTML = marksDisplay;
+
+        // Initialize/update chart
         const ctx = document.getElementById('marks-chart').getContext('2d');
         if (window.myChart) window.myChart.destroy();
         
@@ -616,20 +649,20 @@
           type: 'bar',
           data: {
             labels: student.subjects.map((subject, index) => 
-              `${subject}\n${getGrade(student.marks[index])} - ${student.marks[index]}`
+              `${subject}\n${getGrade(student.marks[index])}`
             ),
             datasets: [{
               label: 'Marks',
-              data: student.marks,
+              data: student.marks.map(mark => mark === 0 ? 'Absent' : mark),
               backgroundColor: student.marks.map(mark => 
+                mark === 0 ? '#e74c3c' : 
                 mark >= 75 ? '#2ecc71' : 
-                mark >= 65 ? '#3498db' : 
-                mark >= 50 ? '#f1c40f' : 
-                mark >= 35 ? '#e67e22' : '#e74c3c'
+                mark >= 35 ? '#3498db' : '#f1c40f'
               ),
               borderColor: '#2c3e50',
               borderWidth: 2,
-              borderRadius: 5
+              borderRadius: 5,
+              hoverBackgroundColor: '#2ecc71'
             }]
           },
           options: {
@@ -644,12 +677,7 @@
               },
               x: {
                 grid: { display: false },
-                ticks: { 
-                  color: '#7f8c8d',
-                  callback: function(value) {
-                    return this.getLabelForValue(value).split('\n');
-                  }
-                }
+                ticks: { color: '#7f8c8d' }
               }
             },
             plugins: {
@@ -706,7 +734,20 @@
       }
     }
 
+    function calculateGradeBreakdown(marks) {
+      const grades = { A: 0, B: 0, C: 0, S: 0, W: 0 };
+      marks.forEach(mark => {
+        if (mark >= 75) grades.A++;
+        else if (mark >= 65) grades.B++;
+        else if (mark >= 50) grades.C++;
+        else if (mark >= 35) grades.S++;
+        else grades.W++;
+      });
+      return grades;
+    }
+
     function getGrade(mark) {
+      if (mark === 0) return 'Absent';
       if (mark >= 75) return 'A';
       else if (mark >= 65) return 'B';
       else if (mark >= 50) return 'C';
