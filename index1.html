@@ -204,19 +204,257 @@
   <script src="https://cdn.jsdelivr.net/npm/chartjs-plugin-annotation@2.0.1"></script>
   <script>
     const studentsData = {
-      "6664": {
-        name: "R.B. GUNASEKARA",
-        place: 21,
-        marks: [59, 70, 67, 73, 70, 63, 71, 58],
-        subjects: ["Buddhism", "Sinhala", "Maths", "Science", "English", "History", "Commerce", "ICT"]
-      },
-      "6680": {
-        name: "K.A.NAVINDU SIWHAS",
-        place: 10,
-        marks: [75, 85, 86, 73, 84, 73, 75, 75],
-        subjects: ["Buddhism", "Sinhala", "Maths", "Science", "English", "History", "Geography", "ICT"]
-      }
-    };
+  "6664": {
+    "name": "R.B. GUNASEKARA",
+    "marks": [59, 70, 67, 73, 70, 63, 71, 80, 58],
+    "subjects": ["Buddhism", "Sinhala Language", "Mathematics", "Science", "English", "History", "Commerce (OPT 1)", "Western Music (OPT 2)", "ICT (OPT 3)"]
+  },
+  "6680": {
+    "name": "K.A.NAVINDU SIWHAS",
+    "marks": [75, 85, 86, 73, 84, 73, 75, 82, 75],
+    "subjects": ["Buddhism", "Sinhala Language", "Mathematics", "Science", "English", "History", "Geography (OPT 1)", "Civic Education (OPT 1)", "ICT (OPT 3)"]
+  },
+  "6686": {
+    "name": "K.M.KALANA SANDEEPA",
+    "marks": [62, 59, 53, 61, 61, 53, 66, 0, 66],
+    "subjects": ["Buddhism", "Sinhala Language", "Mathematics", "Science", "English", "History", "Music Orieant (OPT 2)", "Dancing (OPT 2)", "Health (OPT 3)"]
+  },
+  "6690": {
+    "name": "U.A.HASOD HIMAKARA",
+    "marks": [69, 76, 63, 66, 68, 72, 65, 80, 60],
+    "subjects": ["Buddhism", "Sinhala Language", "Mathematics", "Science", "English", "History", "Geography (OPT 1)", "Western Music (OPT 2)", "ICT (OPT 3)"]
+  },
+  "6697": {
+    "name": "W.D.ADEEPA ESHAN",
+    "marks": [26, 63, 0, 48, 50, 54, 51, 56, 45],
+    "subjects": ["Buddhism", "Sinhala Language", "Mathematics", "Science", "English", "History", "Korean Language (OPT 1)", "Music Orieant (OPT 2)", "Health (OPT 3)"]
+  },
+  "6699": {
+    "name": "A.J.ABHIMAN JAYASINGHE",
+    "marks": [78, 73, 40, 54, 85, 69, 93, 54, 74],
+    "subjects": ["Buddhism", "Sinhala Language", "Mathematics", "Science", "English", "History", "Civic Education (OPT 1)", "English Lit (OPT 2)", "Health (OPT 3)"]
+  },
+  "6714": {
+    "name": "D.CHARUKA HETTIWATTA",
+    "marks": [47, 31, 0, 0, 43, 53, 51, 17, 33],
+    "subjects": ["Buddhism", "Sinhala Language", "Mathematics", "Science", "English", "History", "Civic Education (OPT 1)", "Dancing (OPT 2)", "Health (OPT 3)"]
+  },
+  "6729": {
+    "name": "K.G. SAJANA KITHMINA",
+    "marks": [76, 68, 88, 81, 65, 74, 97, 67, 81],
+    "subjects": ["Buddhism", "Sinhala Language", "Mathematics", "Science", "English", "History", "Tamil (OPT 1)", "Art (OPT 2)", "ICT (OPT 3)"]
+  },
+  "6732": {
+    "name": "M.M. DANINDU DILHARA",
+    "marks": [54, 49, 5, 41, 45, 50, 40, 0, 51],
+    "subjects": ["Buddhism", "Sinhala Language", "Mathematics", "Science", "English", "History", "Korean Language (OPT 1)", "Art (OPT 2)", "Health (OPT 3)"]
+  },
+  "6738": {
+    "name": "K.J. UDUGAMPOLA",
+    "marks": [55, 72, 70, 59, 83, 66, 56, 69, 69],
+    "subjects": ["Buddhism", "Sinhala Language", "Mathematics", "Science", "English", "History", "Commerce (OPT 1)", "Music Orieant (OPT 2)", "Health (OPT 3)"]
+  },
+  "6739": {
+    "name": "G.K. DIHIRA YUGEETH",
+    "marks": [20, 43, 9, 54, 45, 60, 25, 53, 56],
+    "subjects": ["Buddhism", "Sinhala Language", "Mathematics", "Science", "English", "History", "Korean Language (OPT 1)", "Drama & Theatory (OPT 2)", "Health (OPT 3)"]
+  },
+  "6742": {
+    "name": "A.G.UDUPILAGE",
+    "marks": [27, 36, 8, 48, 60, 39, 50, 10, 52],
+    "subjects": ["Buddhism", "Sinhala Language", "Mathematics", "Science", "English", "History", "Geography (OPT 1)", "Dancing (OPT 2)", "Health (OPT 3)"]
+  },
+  "6753": {
+    "name": "W.G.YALINDU NETHSARA",
+    "marks": [52, 0, 31, 39, 49, 0, 0, 50, 0],
+    "subjects": ["Buddhism", "Sinhala Language", "Mathematics", "Science", "English", "History", "Commerce (OPT 1)", "Western Music (OPT 2)", "Agri & Food technology (OPT 3)"]
+  },
+  "6757": {
+    "name": "M.WATHSALA HEWAGAMA",
+    "marks": [65, 74, 57, 66, 82, 67, 79, 0, 78],
+    "subjects": ["Buddhism", "Sinhala Language", "Mathematics", "Science", "English", "History", "Civic Education (OPT 1)", "Western Music (OPT 2)", "Health (OPT 3)"]
+  },
+  "6758": {
+    "name": "S.A.S. ALAHAKOON",
+    "marks": [68, 60, 31, 49, 67, 44, 59, 60, 60],
+    "subjects": ["Buddhism", "Sinhala Language", "Mathematics", "Science", "English", "History", "Commerce (OPT 1)", "English Lit (OPT 2)", "ICT (OPT 3)"]
+  },
+  "6767": {
+    "name": "A.MANULA SANDIL",
+    "marks": [48, 74, 44, 53, 56, 63, 70, 78, 79],
+    "subjects": ["Buddhism", "Sinhala Language", "Mathematics", "Science", "English", "History", "Commerce (OPT 1)", "Sinhala Lit (OPT 2)", "ICT (OPT 3)"]
+  },
+  "6779": {
+    "name": "Y.R. SAMARAWEERAARACHCHI",
+    "marks": [89, 92, 95, 91, 85, 82, 99, 92, 97],
+    "subjects": ["Buddhism", "Sinhala Language", "Mathematics", "Science", "English", "History", "Tamil (OPT 1)", "Art (OPT 2)", "ICT (OPT 3)"]
+  },
+  "6792": {
+    "name": "D.L.B.T. THUSARAKA",
+    "marks": [57, 74, 79, 50, 74, 51, 73, 66, 67],
+    "subjects": ["Buddhism", "Sinhala Language", "Mathematics", "Science", "English", "History", "Commerce (OPT 1)", "Sinhala Lit (OPT 2)", "ICT (OPT 3)"]
+  },
+  "6794": {
+    "name": "L.N.M. MENDAKA",
+    "marks": [64, 55, 49, 44, 53, 73, 54, 0, 71],
+    "subjects": ["Buddhism", "Sinhala Language", "Mathematics", "Science", "English", "History", "Commerce (OPT 1)", "Western Music (OPT 2)", "Health (OPT 3)"]
+  },
+  "6799": {
+    "name": "H.G.RITHIRA HANDISU",
+    "marks": [72, 77, 41, 61, 53, 82, 71, 81, 65],
+    "subjects": ["Buddhism", "Sinhala Language", "Mathematics", "Science", "English", "History", "Commerce (OPT 1)", "Art (OPT 2)", "ICT (OPT 3)"]
+  },
+  "6804": {
+    "name": "H.AMOD INDUPAMA",
+    "marks": [52, 44, 50, 42, 39, 76, 42, 50, 51],
+    "subjects": ["Buddhism", "Sinhala Language", "Mathematics", "Science", "English", "History", "Commerce (OPT 1)", "English Lit (OPT 2)", "ICT (OPT 3)"]
+  },
+  "6808": {
+    "name": "A.K.ASHEN SHAVIDU",
+    "marks": [78, 83, 82, 95, 72, 87, 80, 0, 80],
+    "subjects": ["Buddhism", "Sinhala Language", "Mathematics", "Science", "English", "History", "Geography (OPT 1)", "Western Music (OPT 2)", "ICT (OPT 3)"]
+  },
+  "6823": {
+    "name": "B.J.A. JANITH CHATHUMINA",
+    "marks": [44, 39, 7, 33, 30, 24, 47, 54, 49],
+    "subjects": ["Buddhism", "Sinhala Language", "Mathematics", "Science", "English", "History", "Civic Education (OPT 1)", "Dancing (OPT 2)", "Health (OPT 3)"]
+  },
+  "6825": {
+    "name": "N.V.R. VIDARSHANA",
+    "marks": [52, 53, 16, 53, 45, 42, 65, 56, 54],
+    "subjects": ["Buddhism", "Sinhala Language", "Mathematics", "Science", "English", "History", "Geography (OPT 1)", "English Lit (OPT 2)", "Health (OPT 3)"]
+  },
+  "6828": {
+    "name": "G.K.A. SAHANSITH",
+    "marks": [46, 55, 11, 54, 48, 41, 45, 37, 36],
+    "subjects": ["Buddhism", "Sinhala Language", "Mathematics", "Science", "English", "History", "Civic Education (OPT 1)", "Sinhala Lit (OPT 2)", "Health (OPT 3)"]
+  },
+  "6831": {
+    "name": "K.M.D.KULARATHNA",
+    "marks": [50, 47, 18, 43, 58, 55, 82, 0, 61],
+    "subjects": ["Buddhism", "Sinhala Language", "Mathematics", "Science", "English", "History", "Korean Language (OPT 1)", "Art (OPT 2)", "Health (OPT 3)"]
+  },
+  "6844": {
+    "name": "K.H.RASHEEN OSHADHA",
+    "marks": [40, 64, 36, 52, 58, 53, 82, 0, 30],
+    "subjects": ["Buddhism", "Sinhala Language", "Mathematics", "Science", "English", "History", "Korean Language (OPT 1)", "Art (OPT 2)", "Health (OPT 3)"]
+  },
+  "6845": {
+    "name": "P.H.VIMUKTHI DENUWAN",
+    "marks": [28, 59, 19, 43, 48, 54, 31, 41, 21],
+    "subjects": ["Buddhism", "Sinhala Language", "Mathematics", "Science", "English", "History", "Civic Education (OPT 1)", "Sinhala Lit (OPT 2)", "Health (OPT 3)"]
+  },
+  "6846": {
+    "name": "W.S. THISUN DILSARA",
+    "marks": [47, 46, 36, 54, 53, 56, 26, 7, 26],
+    "subjects": ["Buddhism", "Sinhala Language", "Mathematics", "Science", "English", "History", "Civic Education (OPT 1)", "Dancing (OPT 2)", "Health (OPT 3)"]
+  },
+  "6921": {
+    "name": "L.G.OKINDU WATHMIRA",
+    "marks": [98, 89, 61, 73, 89, 84, 98, 98, 85],
+    "subjects": ["Buddhism", "Sinhala Language", "Mathematics", "Science", "English", "History", "Tamil (OPT 1)", "Art (OPT 2)", "ICT (OPT 3)"]
+  },
+  "8420": {
+    "name": "W.D. GANGUL KETHAKA",
+    "marks": [56, 55, 33, 67, 53, 59, 61, 48, 67],
+    "subjects": ["Buddhism", "Sinhala Language", "Mathematics", "Science", "English", "History", "Commerce (OPT 1)", "Western Music (OPT 2)", "ICT (OPT 3)"]
+  },
+  "8972": {
+    "name": "K.K. NETHINDU THAMINDA",
+    "marks": [67, 71, 92, 91, 76, 72, 88, 0, 80],
+    "subjects": ["Buddhism", "Sinhala Language", "Mathematics", "Science", "English", "History", "Commerce (OPT 1)", "Sinhala Lit (OPT 2)", "ICT (OPT 3)"]
+  },
+  "8974": {
+    "name": "B.K.M. MAHIMA KUSHAN",
+    "marks": [50, 67, 48, 53, 69, 59, 48, 27, 29],
+    "subjects": ["Buddhism", "Sinhala Language", "Mathematics", "Science", "English", "History", "Commerce (OPT 1)", "Sinhala Lit (OPT 2)", "Health (OPT 3)"]
+  },
+  "8981": {
+    "name": "N.A.C.H. WIJENAYAKA",
+    "marks": [66, 68, 60, 67, 40, 66, 82, 67, 63],
+    "subjects": ["Buddhism", "Sinhala Language", "Mathematics", "Science", "English", "History", "Korean Language (OPT 1)", "Art (OPT 2)", "Health (OPT 3)"]
+  },
+  "8984": {
+    "name": "H.P.CHANUKA SENEVIRATHNA",
+    "marks": [62, 75, 43, 38, 61, 59, 70, 47, 61],
+    "subjects": ["Buddhism", "Sinhala Language", "Mathematics", "Science", "English", "History", "Geography (OPT 1)", "English Lit (OPT 2)", "Health (OPT 3)"]
+  },
+  "8989": {
+    "name": "M.D.RANIDU PRAMOD",
+    "marks": [76, 91, 95, 89, 69, 85, 81, 72, 87],
+    "subjects": ["Buddhism", "Sinhala Language", "Mathematics", "Science", "English", "History", "Commerce (OPT 1)", "Art (OPT 2)", "ICT (OPT 3)"]
+  },
+  "8993": {
+    "name": "D.M.THISUM JALITHA",
+    "marks": [96, 90, 95, 93, 83, 92, 96, 98, 98],
+    "subjects": ["Buddhism", "Sinhala Language", "Mathematics", "Science", "English", "History", "Civic Education (OPT 1)", "Sinhala Lit (OPT 2)", "ICT (OPT 3)"]
+  },
+  "8994": {
+    "name": "D.G. NADITH NETHSARA",
+    "marks": [61, 80, 89, 85, 67, 86, 95, 69, 76],
+    "subjects": ["Buddhism", "Sinhala Language", "Mathematics", "Science", "English", "History", "Commerce (OPT 1)", "Sinhala Lit (OPT 2)", "ICT (OPT 3)"]
+  },
+  "8997": {
+    "name": "W.D. MADHUKA SHYAMAL",
+    "marks": [70, 77, 75, 76, 65, 79, 77, 72, 60],
+    "subjects": ["Buddhism", "Sinhala Language", "Mathematics", "Science", "English", "History", "Commerce (OPT 1)", "Sinhala Lit (OPT 2)", "Health (OPT 3)"]
+  },
+  "9004": {
+    "name": "I.A. CHAMINDU DESHAN",
+    "marks": [56, 58, 40, 70, 59, 61, 54, 0, 52],
+    "subjects": ["Buddhism", "Sinhala Language", "Mathematics", "Science", "English", "History", "Commerce (OPT 1)", "Western Music (OPT 2)", "ICT (OPT 3)"]
+  },
+  "9006": {
+    "name": "R.H.A.R. HANSITHA",
+    "marks": [66, 0, 59, 67, 92, 0, 0, 0, 80],
+    "subjects": ["Buddhism", "Sinhala Language", "Mathematics", "Science", "English", "History", "Commerce (OPT 1)", "Sinhala Lit (OPT 2)", "ICT (OPT 3)"]
+  },
+  "9019": {
+    "name": "W.JANITH NIMSARA",
+    "marks": [31, 69, 67, 36, 56, 70, 68, 48, 67],
+    "subjects": ["Buddhism", "Sinhala Language", "Mathematics", "Science", "English", "History", "Commerce (OPT 1)", "Western Music (OPT 2)", "Health (OPT 3)"]
+  },
+  "9020": {
+    "name": "A.I.WITHANAWASAM",
+    "marks": [76, 80, 78, 71, 87, 70, 84, 34, 83],
+    "subjects": ["Buddhism", "Sinhala Language", "Mathematics", "Science", "English", "History", "Commerce (OPT 1)", "Sinhala Lit (OPT 2)", "ICT (OPT 3)"]
+  },
+  "9040": {
+    "name": "G.K. THASITH THANUWARA",
+    "marks": [87, 89, 93, 88, 81, 94, 96, 98, 89],
+    "subjects": ["Buddhism", "Sinhala Language", "Mathematics", "Science", "English", "History", "Commerce (OPT 1)", "Art (OPT 2)", "ICT (OPT 3)"]
+  },
+  "9241": {
+    "name": "L.YASHOD LASAL",
+    "marks": [93, 75, 88, 86, 84, 81, 83, 76, 83],
+    "subjects": ["Buddhism", "Sinhala Language", "Mathematics", "Science", "English", "History", "Geography (OPT 1)", "Sinhala Lit (OPT 2)", "ICT (OPT 3)"]
+  },
+  "9246": {
+    "name": "E.D. LOSITH PABASARA",
+    "marks": [56, 57, 42, 74, 70, 67, 16, 0, 59],
+    "subjects": ["Buddhism", "Sinhala Language", "Mathematics", "Science", "English", "History", "Korean Language (OPT 1)", "Drama & Theatory (OPT 2)", "Health (OPT 3)"]
+  },
+  "9782": {
+    "name": "M.G.S. SITHUMJITH",
+    "marks": [83, 89, 90, 82, 19, 92, 86, 71, 80],
+    "subjects": ["Buddhism", "Sinhala Language", "Mathematics", "Science", "English", "History", "Commerce (OPT 1)", "Art (OPT 2)", "ICT (OPT 3)"]
+  },
+  "9750": {
+    "name": "N.D. WANNIARACHCHI",
+    "marks": [75, 86, 57, 73, 67, 63, 79, 68, 69],
+    "subjects": ["Buddhism", "Sinhala Language", "Mathematics", "Science", "English", "History", "Civic Education (OPT 1)", "English Lit (OPT 2)", "Health (OPT 3)"]
+  },
+  "10523": {
+    "name": "W.BINUKA RACHINTHA",
+    "marks": [75, 73, 37, 60, 71, 85, 65, 65, 62],
+    "subjects": ["Buddhism", "Sinhala Language", "Mathematics", "Science", "English", "History", "Civic Education (OPT 1)", "Sinhala Lit (OPT 2)", "Health (OPT 3)"]
+  },
+  "11115": {
+    "name": "R.W. SAYURA DINETHMA",
+    "marks": [41, 56, 25, 43, 71, 41, 30, 58, 47],
+    "subjects": ["Buddhism", "Sinhala Language", "Mathematics", "Science", "English", "History", "Commerce (OPT 1)", "Sinhala Lit (OPT 2)", "Health (OPT 3)"]
+  }
+};
 
     document.getElementById("search-btn").addEventListener("click", searchStudent);
     document.getElementById("admission-number").addEventListener("keypress", (e) => {
