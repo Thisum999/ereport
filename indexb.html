@@ -19,6 +19,29 @@
       --light-gray: #f8f9fa;
       --white: #ffffff;
     }
+    #rotate-message {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  font-size: 18px;
+  font-family: Arial, sans-serif;
+}
+
+#rotate-logo {
+  width: 24px; /* Adjust the size as needed */
+  height: 24px; /* Adjust the size as needed */
+  margin-right: 10px; /* Space between the logo and the text */
+  animation: rotate 2s linear infinite; /* Rotate animation */
+}
+
+@keyframes rotate {
+  from {
+    transform: rotate(0deg);
+  }
+  to {
+    transform: rotate(360deg);
+  }
+}
     * {
       margin: 0;
       padding: 0;
@@ -128,7 +151,7 @@
       color: var(--primary);
     }
     #teacher{
-      color: #e9ecef;
+      color: #ffffff;
     }
     .grade-distribution {
       background: var(--white);
@@ -289,7 +312,10 @@
   <footer>
     <p>Designed By - Thisum Jalitha ©</p>
   </footer>
-  <div id="rotate-message">Rotate phone for best view</div>
+  <div id="rotate-message">
+    <img src="https://i.ibb.co/6Qwnd2G/rotate-2313241.png" alt="Rotate Logo" id="rotate-logo">
+    Rotate phone for best view
+  </div> 
   <script src="https://cdn.jsdelivr.net/npm/chart.js"></script>
   <script src="https://cdn.jsdelivr.net/npm/chartjs-plugin-annotation@2.0.1"></script>
   <script>
