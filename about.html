@@ -1,0 +1,169 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>About - Mahinda College E-Report</title>
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0/css/all.min.css">
+    <style>
+        :root {
+            --primary-color: #FFD700;
+            --secondary-color: #FFC300;
+            --accent-color: #000000;
+            --light-bg: #F8F8F8;
+            --dark-bg: #1A1A1A;
+            --text-color: #333333;
+            --white: #FFFFFF;
+        }
+
+        * {
+            box-sizing: border-box;
+            margin: 0;
+            padding: 0;
+        }
+
+        body {
+            font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+            background: var(--light-bg);
+            line-height: 1.6;
+            color: var(--text-color);
+        }
+
+        header {
+            background: linear-gradient(135deg, var(--primary-color), var(--secondary-color));
+            color: var(--accent-color);
+            padding: 1rem;
+            text-align: center;
+            position: relative;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            flex-direction: column;
+        }
+
+        #logo {
+            width: 80px;
+            margin-bottom: 10px;
+        }
+
+        nav {
+            background: var(--dark-bg);
+            padding: 1rem;
+            position: sticky;
+            top: 0;
+            z-index: 1000;
+        }
+
+        .nav-container {
+            display: flex;
+            justify-content: center;
+            gap: 2rem;
+            flex-wrap: wrap;
+        }
+
+        nav a {
+            color: var(--primary-color);
+            text-decoration: none;
+            font-weight: 600;
+            padding: 0.5rem 1rem;
+            border-radius: 25px;
+            transition: all 0.3s ease;
+        }
+
+        nav a:hover {
+            background: var(--secondary-color);
+            color: var(--accent-color);
+        }
+
+        .container {
+            max-width: 90%;
+            margin: 2rem auto;
+            padding: 1.5rem;
+            background: var(--white);
+            border-radius: 10px;
+            box-shadow: 0 5px 15px rgba(0,0,0,0.1);
+            text-align: center;
+        }
+
+        h2 {
+            color: var(--accent-color);
+            margin-bottom: 1rem;
+            font-size: 1.8rem;
+        }
+
+        h2::after {
+            content: '';
+            display: block;
+            width: 50px;
+            height: 3px;
+            background: var(--primary-color);
+            margin: 8px auto;
+        }
+
+        p {
+            color: var(--text-color);
+            line-height: 1.8;
+            margin-bottom: 1rem;
+        }
+
+        footer {
+            background: var(--primary-color);
+            color: var(--accent-color);
+            text-align: center;
+            padding: 1rem;
+            margin-top: 1rem;
+        }
+
+        /* Responsive Design */
+        @media (max-width: 768px) {
+            header {
+                flex-direction: column;
+                text-align: center;
+            }
+
+            #logo {
+                width: 70px;
+            }
+
+            .nav-container {
+                flex-direction: column;
+                text-align: center;
+                gap: 1rem;
+            }
+
+            .container {
+                padding: 1rem;
+            }
+
+            h2 {
+                font-size: 1.5rem;
+            }
+        }
+    </style>
+</head>
+<body>
+    <header>
+        <img src="https://i.ibb.co/kqw53KT/mcglogo.png" alt="Mahinda College Logo" id="logo">
+        <h1>Mahinda College E-Report</h1>
+    </header>
+
+    <nav>
+        <div class="nav-container">
+            <a href="index.html"><i class="fas fa-home"></i> Home</a>
+            <a href="about.html"><i class="fas fa-info-circle"></i> About</a>
+            <a href="contact.html"><i class="fas fa-address-book"></i> Contact</a>
+        </div>
+    </nav>
+
+    <div class="container">
+        <h2>About Us</h2>
+        <p>Mahinda College, established in 1892, is a prestigious educational institution that has been at the forefront of academic excellence in Sri Lanka. Our mission is to foster a nurturing environment that encourages students to reach their full potential.</p>
+        <p>The E-Report platform is an innovative solution designed to streamline the management of student records, attendance, and academic performance. This user-friendly system allows teachers and administrators to access and update information effortlessly, promoting a more efficient educational experience.</p>
+        <p>At Mahinda College, we believe in the power of technology to enhance learning. Our dedicated team is committed to ensuring that our students receive the best possible education, preparing them for a bright future.</p>
+    </div>
+
+    <footer>
+        <p>&copy; Thisum Jalitha  . All rights reserved.</p>
+    </footer>
+</body>
+</html>
