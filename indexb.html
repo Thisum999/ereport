@@ -20,28 +20,26 @@
       --white: #ffffff;
     }
     #rotate-message {
-  display: flex;
-  align-items: center;
-  justify-content: center;
-  font-size: 18px;
-  font-family: Arial, sans-serif;
-}
-
-#rotate-logo {
-  width: 24px; /* Adjust the size as needed */
-  height: 24px; /* Adjust the size as needed */
-  margin-right: 10px; /* Space between the logo and the text */
-  animation: rotate 2s linear infinite; /* Rotate animation */
-}
-
-@keyframes rotate {
-  from {
-    transform: rotate(0deg);
-  }
-  to {
-    transform: rotate(360deg);
-  }
-}
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      font-size: 18px;
+      font-family: Arial, sans-serif;
+    }
+    #rotate-logo {
+      width: 24px; /* Adjust the size as needed */
+      height: 24px; /* Adjust the size as needed */
+      margin-right: 10px; /* Space between the logo and the text */
+      animation: rotate 2s linear infinite; /* Rotate animation */
+    }
+    @keyframes rotate {
+      from {
+        transform: rotate(0deg);
+      }
+      to {
+        transform: rotate(360deg);
+      }
+    }
     * {
       margin: 0;
       padding: 0;
@@ -82,9 +80,17 @@
     }
     .search-container {
       display: flex;
-      flex-direction: column;
       align-items: center;
+      justify-content: center;
       gap: 1rem;
+      flex-wrap: wrap;
+    }
+    #teacher-photo {
+      width: 140px;
+      height: 168px;
+      border-radius: 5%;
+      object-fit: cover;
+      box-shadow: 0 4px 10px rgba(0, 0, 0, 0.1);
     }
     #admission-number {
       padding: 0.8rem 1.2rem;
@@ -194,6 +200,7 @@
       gap: 0.5rem;
       margin-top: 1rem;
     }
+    
     .subject-marks .badge {
       display: inline-block;
       padding: 0.5rem 1rem;
@@ -240,10 +247,10 @@
     }
     #legend {
       position: absolute;
-      top: 10px;
-      right: 10px;
+      top: 222px;
+      right: 15px;
       background-color: rgba(255, 255, 255, 0.8);
-      padding: 10px;
+      padding: 5px;
       border-radius: 5px;
       font-size: 0.8rem;
     }
@@ -267,15 +274,13 @@
   <main>
     <section id="search-section">
       <div class="search-container">
-        <input type="text" id="admission-number" placeholder="Enter Admission Number...">
-        <button id="search-btn">
-          <i class="fas fa-chart-line"></i> Generate Report
-        </button>
-      </div>
-    </section>
-    <section id="report-section">
-      <div id="chart-container">
-        <canvas id="marks-chart"></canvas>
+        <img src="https://i.ibb.co/L8LKZs3/10B.jpg" id="teacher-photo" alt="Teacher Image">
+        <div style="display: flex; flex-direction: column; gap: 1rem;">
+          <input type="text" id="admission-number" placeholder="Enter Admission Number...">
+          <button id="search-btn">
+            <i class="fas fa-chart-line"></i> Generate Report
+          </button>
+        </div>
         <div id="legend">
           <div><span class="color-box" style="background-color: var(--success);"></span>A (75+)</div>
           <div><span class="color-box" style="background-color: var(--warning);"></span>B (60-74)</div>
@@ -283,6 +288,11 @@
           <div><span class="color-box" style="background-color: var(--accent);"></span>W (35-44)</div>
           <div><span class="color-box" style="background-color: var(--danger);"></span>S (Below 35)</div>
         </div>
+      </div>
+    </section>
+    <section id="report-section">
+      <div id="chart-container">
+        <canvas id="marks-chart"></canvas>
       </div>
       <div id="student-info">
         <div class="info-card">
@@ -310,7 +320,7 @@
     </section>
   </main>
   <footer>
-    <p>Designed By<a href="https://wa.me/+94768846375"></a> - Thisum Jalitha ©</p>
+    <p>Designed By<a href="https://wa.me/+94768846375">Thisum Jalitha ©</a></p>
   </footer>
   <div id="rotate-message">
     <img src="https://i.ibb.co/mFTwkmd4/rotate-2313593.png" alt="Rotate Logo" id="rotate-logo">
@@ -320,7 +330,7 @@
   <script src="https://cdn.jsdelivr.net/npm/chartjs-plugin-annotation@2.0.1"></script>
   <script>
     const studentsData = {
-  "6664": {
+ "6664": {
     "name": "R.B. GUNASEKARA",
     "place": 21,
     "marks": [59, 70, 67, 73, 70, 63, 71, 65, 58],
@@ -622,6 +632,7 @@
     "marks": [41, 56, 25, 43, 71, 41, 30, 58, 0],
     "subjects": ["Buddhism", "Sinhala ", "Maths", "Science", "English", "History", "OPT 1", "OPT 2", "OPT 3"]
   }
+  // Add more student information here...
 };
 
     document.getElementById("search-btn").addEventListener("click", searchStudent);
@@ -635,9 +646,10 @@
       if (student) {
         const totalMarks = student.marks.reduce((a, b) => a + b, 0);
         const averageMarks = (totalMarks / student.marks.length).toFixed(2);
+        const totalStudents = Object.keys(studentsData).length;
         document.getElementById("student-name").textContent = student.name;
         document.getElementById("total-marks-display").textContent = totalMarks;
-        document.getElementById("place-rank").textContent = `#${student.place}`;
+        document.getElementById("place-rank").textContent = `#${student.place} (out of ${totalStudents})`;
         document.getElementById("average-marks").textContent = `${averageMarks}%`;
         initChart(student);
         updateGradeDistribution(student);
@@ -649,133 +661,132 @@
     }
 
     function initChart(student) {
-      const ctx = document.getElementById('marks-chart').getContext('2d');
-      const isMobile = window.innerWidth <= 768;
+          const ctx = document.getElementById('marks-chart').getContext('2d');
+          const isMobile = window.innerWidth <= 768;
 
-      // Retrieve CSS variables properly
-      const styles = getComputedStyle(document.documentElement);
-      const successColor = styles.getPropertyValue('--success').trim();
-      const warningColor = styles.getPropertyValue('--warning').trim();
-      const infoColor = styles.getPropertyValue('--info').trim();
-      const accentColor = styles.getPropertyValue('--accent').trim();
-      const dangerColor = styles.getPropertyValue('--danger').trim();
+          // Retrieve CSS variables properly
+          const styles = getComputedStyle(document.documentElement);
+          const successColor = styles.getPropertyValue('--success').trim();
+          const warningColor = styles.getPropertyValue('--warning').trim();
+          const infoColor = styles.getPropertyValue('--info').trim();
+          const accentColor = styles.getPropertyValue('--accent').trim();
+          const dangerColor = styles.getPropertyValue('--danger').trim();
 
-      if (window.myChart) window.myChart.destroy();
-      window.myChart = new Chart(ctx, {
-        type: 'bar',
-        data: {
-          labels: student.subjects.map((subject, index) => `${subject} (${student.marks[index]})`),
-          datasets: [{
-            data: student.marks,
-            backgroundColor: student.marks.map(m => 
-              m >= 75 ? successColor : 
-              m >= 60 ? warningColor : 
-              m >= 45 ? infoColor : 
-              m >= 35 ? accentColor : dangerColor
-            ),
-            borderColor: '#2c3e50',
-            borderWidth: 2,
-            borderRadius: 5
-          }]
-        },
-        options: {
-          responsive: true,
-          maintainAspectRatio: false,
-          scales: {
-            y: {
-              beginAtZero: true,
-              max: 100,
-              grid: { color: '#dfe6e9' },
-              ticks: { color: '#2c3e50', font: { size: isMobile ? 12 : 14 } }
+          if (window.myChart) window.myChart.destroy();
+          window.myChart = new Chart(ctx, {
+            type: 'bar',
+            data: {
+              labels: student.subjects.map((subject, index) => `${subject} (${student.marks[index]})`),
+              datasets: [{
+                data: student.marks,
+                backgroundColor: student.marks.map(m => 
+                  m >= 75 ? successColor : 
+                  m >= 60 ? warningColor : 
+                  m >= 45 ? infoColor : 
+                  m >= 35 ? accentColor : dangerColor
+                ),
+                borderColor: '#2c3e50',
+                borderWidth: 2,
+                borderRadius: 5
+              }]
             },
-            x: {
-              grid: { display: false },
-              ticks: {
-                color: '#2c3e50',
-                font: { size: isMobile ? 10 : 12 },
-                autoSkip: false,
-                maxRotation: isMobile ? 90 : 0,
-                minRotation: isMobile ? 90 : 0
-              }
-            }
-          },
-          plugins: {
-            legend: { display: false },
-            annotation: {
-              annotations: {
-                passLine: {
-                  type: 'line',
-                  yMin: 35,
-                  yMax: 35,
-                  borderColor: '#e74c3c',
-                  borderWidth: 3,
-                  borderDash: [5, 3],
-                  label: {
-                    content: 'Pass (35)',
-                    display: true,
-                    position: 'end',
-                    backgroundColor: '#e74c3c',
-                    color: 'white'
-                  }
+            options: {
+              responsive: true,
+              maintainAspectRatio: false,
+              scales: {
+                y: {
+                  beginAtZero: true,
+                  max: 100,
+                  grid: { color: '#dfe6e9' },
+                  ticks: { color: '#2c3e50', font: { size: isMobile ? 12 : 14 } }
                 },
-                distinctionLine: {
-                  type: 'line',
-                  yMin: 75,
-                  yMax: 75,
-                  borderColor: '#FFD700',
-                  borderWidth: 3,
-                  borderDash: [5, 3],
-                  label: {
-                    content: 'Distinction (75)',
-                    display: true,
-                    position: 'end',
-                    backgroundColor: '#FFD700',
-                    color: '#2c3e50'
+                x: {
+                  grid: { display: false },
+                  ticks: {
+                    color: '#2c3e50',
+                    font: { size: isMobile ? 10 : 12 },
+                    autoSkip: false,
+                    maxRotation: isMobile ? 90 : 0,
+                    minRotation: isMobile ? 90 : 0
+                  }
+                }
+              },
+              plugins: {
+                legend: { display: false },
+                annotation: {
+                  annotations: {
+                    passLine: {
+                      type: 'line',
+                      yMin: 35,
+                      yMax: 35,
+                      borderColor: '#e74c3c',
+                      borderWidth: 3,
+                      borderDash: [5, 3],
+                      label: {
+                        content: 'Pass (35)',
+                        display: true,
+                        position: 'end',
+                        backgroundColor: '#e74c3c',
+                        color: 'white'
+                      }
+                    },
+                    distinctionLine: {
+                      type: 'line',
+                      yMin: 75,
+                      yMax: 75,
+                      borderColor: '#FFD700',
+                      borderWidth: 3,
+                      borderDash: [5, 3],
+                      label: {
+                        content: 'Distinction (75)',
+                        display: true,
+                        position: 'end',
+                        backgroundColor: '#FFD700',
+                        color: '#2c3e50'
+                      }
+                    }
                   }
                 }
               }
             }
-          }
+          });
         }
-      });
-    }
 
-    function updateGradeDistribution(student) {
-      const gradeCounts = { A: 0, B: 0, C: 0, W: 0, S: 0 };
-      student.marks.forEach(mark => {
-        if (mark >= 75) gradeCounts.A++;
-        else if (mark >= 60) gradeCounts.B++;
-        else if (mark >= 45) gradeCounts.C++;
-        else if (mark >= 35) gradeCounts.W++;
-        else gradeCounts.S++;
-      });
-      const gradeDistributionDiv = document.getElementById("grade-distribution");
-      gradeDistributionDiv.innerHTML = `
-        ${gradeCounts.A > 0 ? `<span class="badge success">A: ${gradeCounts.A}</span>` : ''}
-        ${gradeCounts.B > 0 ? `<span class="badge warning">B: ${gradeCounts.B}</span>` : ''}
-        ${gradeCounts.C > 0 ? `<span class="badge info">C: ${gradeCounts.C}</span>` : ''}
-        ${gradeCounts.W > 0 ? `<span class="badge accent">W: ${gradeCounts.W}</span>` : ''}
-        ${gradeCounts.S > 0 ? `<span class="badge danger">S: ${gradeCounts.S}</span>` : ''}
-      `;
-    }
+        function updateGradeDistribution(student) {
+          const gradeCounts = { A: 0, B: 0, C: 0, W: 0, S: 0 };
+          student.marks.forEach(mark => {
+            if (mark >= 75) gradeCounts.A++;
+            else if (mark >= 60) gradeCounts.B++;
+            else if (mark >= 45) gradeCounts.C++;
+            else if (mark >= 35) gradeCounts.W++;
+            else gradeCounts.S++;
+          });
+          const gradeDistributionDiv = document.getElementById("grade-distribution");
+          gradeDistributionDiv.innerHTML = `
+            ${gradeCounts.A > 0 ? `<span class="badge success">A: ${gradeCounts.A}</span>` : ''}
+            ${gradeCounts.B > 0 ? `<span class="badge warning">B: ${gradeCounts.B}</span>` : ''}
+            ${gradeCounts.C > 0 ? `<span class="badge info">C: ${gradeCounts.C}</span>` : ''}
+            ${gradeCounts.W > 0 ? `<span class="badge accent">W: ${gradeCounts.W}</span>` : ''}
+            ${gradeCounts.S > 0 ? `<span class="badge danger">S: ${gradeCounts.S}</span>` : ''}
+          `;
+        }
 
-    function updateSubjectDetails(student) {
-      const subjectDetailsDiv = document.getElementById("subject-details");
-      subjectDetailsDiv.innerHTML = "";
-      student.marks.forEach((mark, index) => {
-        let badgeClass = '';
-        if (mark >= 75) badgeClass = 'success';
-        else if (mark >= 60) badgeClass = 'warning';
-        else if (mark >= 45) badgeClass = 'info';
-        else if (mark >= 35) badgeClass = 'accent';
-        else badgeClass = 'danger';
-        const subjectBadge = document.createElement("span");
-        subjectBadge.className = `badge ${badgeClass}`;
-        subjectBadge.textContent = `${student.subjects[index]}: ${mark}`;
-        subjectDetailsDiv.appendChild(subjectBadge);
-      });
-    }
-  </script>
-  
-</body>
+        function updateSubjectDetails(student) {
+          const subjectDetailsDiv = document.getElementById("subject-details");
+          subjectDetailsDiv.innerHTML = "";
+          student.marks.forEach((mark, index) => {
+            let badgeClass = '';
+            if (mark >= 75) badgeClass = 'success';
+            else if (mark >= 60) badgeClass = 'warning';
+            else if (mark >= 45) badgeClass = 'info';
+            else if (mark >= 35) badgeClass = 'accent';
+            else badgeClass = 'danger';
+            const subjectBadge = document.createElement("span");
+            subjectBadge.className = `badge ${badgeClass}`;
+            subjectBadge.textContent = `${student.subjects[index]}: ${mark}`;
+            subjectDetailsDiv.appendChild(subjectBadge);
+          });
+        }
+      </script>
+    </body>
 </html>
