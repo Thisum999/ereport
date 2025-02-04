@@ -1,0 +1,332 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=no">
+  <title>MCG G10 - 2024 3rd Term Test E-Report</title>
+  <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@300;400;600;700&family=Montserrat:wght@700&display=swap" rel="stylesheet">
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0/css/all.min.css">
+  <style>
+    /* Color Scheme */
+    :root {
+      --gold: #FFD700;
+      --dark-gold: #daa520;
+      --black: #2c3e50;
+      --red: #e74c3c;
+      --green: #2ecc71;
+      --blue: #3498db;
+      --white: #ffffff;
+      --light-gray: #f8f9fa;
+    }
+
+    * {
+      margin: 0;
+      padding: 0;
+      box-sizing: border-box;
+      font-family: 'Poppins', sans-serif;
+    }
+
+    body {
+      background: linear-gradient(135deg, var(--light-gray), #e9ecef);
+      color: var(--black);
+      line-height: 1.6;
+    }
+
+    header {
+      text-align: center;
+      background: linear-gradient(135deg, var(--black), var(--dark-gold));
+      color: var(--white);
+      padding: 2rem 0;
+      box-shadow: 0 4px 15px rgba(0, 0, 0, 0.1);
+    }
+
+    header h1 {
+      font-family: 'Montserrat', sans-serif;
+      font-size: 2rem;
+      color: var(--gold);
+      text-shadow: 2px 2px 4px rgba(0, 0, 0, 0.3);
+    }
+
+    header p {
+      font-size: 1rem;
+      opacity: 0.9;
+    }
+
+    main {
+      padding: 2rem 1rem;
+      max-width: 1200px;
+      margin: 0 auto;
+    }
+
+    #search-section {
+      text-align: center;
+      margin-bottom: 2rem;
+    }
+
+    .search-container {
+      display: flex;
+      flex-direction: column;
+      align-items: center;
+      gap: 1rem;
+    }
+
+    #admission-number {
+      padding: 0.8rem 1.2rem;
+      font-size: 1rem;
+      width: 100%;
+      max-width: 300px;
+      border: 2px solid var(--dark-gold);
+      border-radius: 25px;
+      background: var(--white);
+      box-shadow: 0 4px 6px rgba(0, 0, 0, 0.05);
+    }
+
+    #search-btn {
+      padding: 0.8rem 1.5rem;
+      font-size: 1rem;
+      background: linear-gradient(135deg, var(--dark-gold), var(--gold));
+      color: var(--black);
+      border: none;
+      border-radius: 25px;
+      cursor: pointer;
+      box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1);
+      display: flex;
+      align-items: center;
+      gap: 0.5rem;
+    }
+
+    #report-section {
+      display: none;
+    }
+
+    #chart-container {
+      background: var(--white);
+      padding: 1rem;
+      border-radius: 15px;
+      box-shadow: 0 10px 30px rgba(0, 0, 0, 0.08);
+      margin: 1rem 0;
+    }
+
+    #student-info {
+      background: var(--white);
+      padding: 1rem;
+      border-radius: 15px;
+      box-shadow: 0 10px 30px rgba(0, 0, 0, 0.08);
+      display: grid;
+      grid-template-columns: repeat(auto-fit, minmax(150px, 1fr));
+      gap: 1rem;
+      margin: 1rem 0;
+    }
+
+    .info-card {
+      text-align: center;
+      padding: 1rem;
+      border-radius: 10px;
+      background: var(--light-gray);
+      border: 2px solid var(--dark-gold);
+    }
+
+    .info-card h3 {
+      font-size: 1rem;
+      color: var(--black);
+      margin-bottom: 0.5rem;
+    }
+
+    .info-card p {
+      font-size: 1.2rem;
+      font-weight: 600;
+      color: var(--dark-gold);
+    }
+
+    footer {
+      text-align: center;
+      padding: 1rem;
+      background: var(--white);
+      color: var(--black);
+      margin-top: 2rem;
+      box-shadow: 0 -4px 15px rgba(0, 0, 0, 0.1);
+    }
+
+    @media (min-width: 768px) {
+      header h1 { font-size: 2.5rem; }
+      #admission-number { font-size: 1.1rem; }
+      #search-btn { font-size: 1.1rem; }
+      .info-card { padding: 1.5rem; }
+    }
+  </style>
+</head>
+<body>
+  <header>
+    <h1>MCG G10 - 2024 3rd Term Test E-Report</h1>
+    <p>Class Teacher: Mrs. S.T. Indrani</p>
+  </header>
+
+  <main>
+    <section id="search-section">
+      <div class="search-container">
+        <input type="text" id="admission-number" placeholder="Enter Admission Number...">
+        <button id="search-btn">
+          <i class="fas fa-chart-line"></i> Generate Report
+        </button>
+      </div>
+    </section>
+
+    <section id="report-section">
+      <div id="chart-container">
+        <canvas id="marks-chart"></canvas>
+      </div>
+      <div id="student-info">
+        <div class="info-card">
+          <h3><i class="fas fa-user-graduate"></i> Student Name</h3>
+          <p id="student-name">-</p>
+        </div>
+        <div class="info-card">
+          <h3><i class="fas fa-trophy"></i> Total Marks</h3>
+          <p id="total-marks-display">-</p>
+        </div>
+        <div class="info-card">
+          <h3><i class="fas fa-medal"></i> Current Rank</h3>
+          <p id="place-rank">-</p>
+        </div>
+        <div class="info-card">
+          <h3><i class="fas fa-percent"></i> Average Score</h3>
+          <p id="average-marks">-</p>
+        </div>
+      </div>
+    </section>
+  </main>
+
+  <footer>
+    <p>Designed By - Thisum Jalitha ©</p>
+  </footer>
+
+  <script src="https://cdn.jsdelivr.net/npm/chart.js"></script>
+  <script src="https://cdn.jsdelivr.net/npm/chartjs-plugin-annotation@2.0.1"></script>
+  <script>
+    const studentsData = {
+      "6664": {
+        name: "R.B. GUNASEKARA",
+        place: 21,
+        marks: [59, 70, 67, 73, 70, 63, 71, 58],
+        subjects: ["Buddhism", "Sinhala", "Maths", "Science", "English", "History", "Commerce", "ICT"]
+      },
+      "6680": {
+        name: "K.A.NAVINDU SIWHAS",
+        place: 10,
+        marks: [75, 85, 86, 73, 84, 73, 75, 75],
+        subjects: ["Buddhism", "Sinhala", "Maths", "Science", "English", "History", "Geography", "ICT"]
+      }
+    };
+
+    document.getElementById("search-btn").addEventListener("click", searchStudent);
+    document.getElementById("admission-number").addEventListener("keypress", (e) => {
+      if (e.key === "Enter") searchStudent();
+    });
+
+    function searchStudent() {
+      const admissionNumber = document.getElementById("admission-number").value;
+      const student = studentsData[admissionNumber];
+
+      if (student) {
+        const totalMarks = student.marks.reduce((a, b) => a + b, 0);
+        const averageMarks = (totalMarks / student.marks.length).toFixed(2);
+
+        document.getElementById("student-name").textContent = student.name;
+        document.getElementById("total-marks-display").textContent = totalMarks;
+        document.getElementById("place-rank").textContent = `#${student.place}`;
+        document.getElementById("average-marks").textContent = `${averageMarks}%`;
+
+        initChart(student);
+        document.getElementById("report-section").style.display = "block";
+      } else {
+        alert("Student not found! Please check admission number.");
+      }
+    }
+
+    function initChart(student) {
+      const ctx = document.getElementById('marks-chart').getContext('2d');
+      const isMobile = window.innerWidth <= 768;
+
+      if (window.myChart) window.myChart.destroy();
+
+      window.myChart = new Chart(ctx, {
+        type: 'bar',
+        data: {
+          labels: student.subjects.map((s, i) => 
+            isMobile ? `${s.split(' ')[0]}\n${student.marks[i]}` : `${s}\n${student.marks[i]}`
+          ),
+          datasets: [{
+            data: student.marks,
+            backgroundColor: student.marks.map(m => 
+              m >= 75 ? '#FFD700' : 
+              m >= 35 ? '#2ecc71' : '#e74c3c'
+            ),
+            borderColor: '#2c3e50',
+            borderWidth: 2,
+            borderRadius: 5
+          }]
+        },
+        options: {
+          responsive: true,
+          maintainAspectRatio: false,
+          scales: {
+            y: {
+              beginAtZero: true,
+              max: 100,
+              grid: { color: '#dfe6e9' },
+              ticks: { color: '#2c3e50', font: { size: isMobile ? 12 : 14 } }
+            },
+            x: {
+              grid: { display: false },
+              ticks: {
+                color: '#2c3e50',
+                font: { size: isMobile ? 10 : 12 },
+                autoSkip: false,
+                maxRotation: isMobile ? 90 : 0,
+                minRotation: isMobile ? 90 : 0
+              }
+            }
+          },
+          plugins: {
+            legend: { display: false },
+            annotation: {
+              annotations: {
+                passLine: {
+                  type: 'line',
+                  yMin: 35,
+                  yMax: 35,
+                  borderColor: '#e74c3c',
+                  borderWidth: 3,
+                  borderDash: [5, 3],
+                  label: {
+                    content: 'Pass (35)',
+                    display: true,
+                    position: 'end',
+                    backgroundColor: '#e74c3c',
+                    color: 'white'
+                  }
+                },
+                distinctionLine: {
+                  type: 'line',
+                  yMin: 75,
+                  yMax: 75,
+                  borderColor: '#FFD700',
+                  borderWidth: 3,
+                  borderDash: [5, 3],
+                  label: {
+                    content: 'Distinction (75)',
+                    display: true,
+                    position: 'end',
+                    backgroundColor: '#FFD700',
+                    color: '#2c3e50'
+                  }
+                }
+              }
+            }
+          }
+        }
+      });
+    }
+  </script>
+</body>
+</html>
