@@ -1,0 +1,789 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=no">
+  <title>MCG G10C - 2024 3rd Term Test E-Report</title>
+  <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@300;400;600;700&family=Montserrat:wght@700&display=swap" rel="stylesheet">
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0/css/all.min.css">
+  <style>
+    /* Color Scheme */
+    :root {
+      --primary: #45a29e; /* Teal Green */
+      --secondary: #6c757d; /* Grayish Blue */
+      --accent: #f0ad4e; /* Orange */
+      --success: #28a745; /* Green */
+      --warning: #ffc107; /* Yellow */
+      --info: #17a2b8; /* Cyan */
+      --danger: #dc3545; /* Red */
+      --light-gray: #f8f9fa;
+      --white: #ffffff;
+    }
+    #rotate-message {
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      font-size: 18px;
+      font-family: Arial, sans-serif;
+    }
+    #rotate-logo {
+      width: 24px; /* Adjust the size as needed */
+      height: 24px; /* Adjust the size as needed */
+      margin-right: 10px; /* Space between the logo and the text */
+      animation: rotate 2s linear infinite; /* Rotate animation */
+    }
+    @keyframes rotate {
+      from {
+        transform: rotate(0deg);
+      }
+      to {
+        transform: rotate(360deg);
+      }
+    }
+    * {
+      margin: 0;
+      padding: 0;
+      box-sizing: border-box;
+      font-family: 'Poppins', sans-serif;
+      font-weight: bold;
+    }
+    body {
+      background: linear-gradient(135deg, var(--light-gray), #e9ecef);
+      color: var(--secondary);
+      line-height: 1.6;
+      position: relative;
+    }
+    header {
+      text-align: center;
+      background: linear-gradient(135deg, var(--primary), #45a29e);
+      color: var(--white);
+      padding: 2rem 0;
+      box-shadow: 0 4px 15px rgba(0, 0, 0, 0.1);
+    }
+    header h1 {
+      font-family: 'Montserrat', sans-serif;
+      font-size: 2rem;
+      color: var(--accent);
+      text-shadow: 2px 2px 4px rgba(0, 0, 0, 0.3);
+    }
+    header p {
+      font-size: 1.2rem;
+      opacity: 0.9;
+    }
+    main {
+      padding: 2rem 1rem;
+      max-width: 1200px;
+      margin: 0 auto;
+    }
+    #search-section {
+      text-align: center;
+      margin-bottom: 2rem;
+    }
+    .search-container {
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      gap: 1rem;
+      flex-wrap: wrap;
+    }
+    #teacher-photo {
+      width: 140px;
+      height: 170px;
+      border-radius: 5%;
+      object-fit: cover;
+      box-shadow: 0 4px 10px rgba(0, 0, 0, 0.1);
+    }
+    #admission-number {
+      padding: 0.8rem 1.2rem;
+      font-size: 1rem;
+      width: 100%;
+      max-width: 300px;
+      border: 2px solid var(--primary);
+      border-radius: 25px;
+      background: var(--white);
+      box-shadow: 0 4px 6px rgba(0, 0, 0, 0.05);
+    }
+    #search-btn {
+      padding: 0.8rem 1.5rem;
+      font-size: 1rem;
+      background: linear-gradient(135deg, #f0ad4e, var(--accent));
+      color: black;
+      border: none;
+      border-radius: 25px;
+      cursor: pointer;
+      box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1);
+      display: flex;
+      align-items: center;
+      gap: 0.5rem;
+    }
+    #report-section {
+      display: none;
+    }
+    #place-rank{
+      color: #dc3545;
+    }
+    #chart-container {
+      background: var(--white);
+      padding: 1rem;
+      border-radius: 15px;
+      box-shadow: 0 10px 30px rgba(0, 0, 0, 0.08);
+      margin: 1rem 0;
+      position: relative;
+    }
+    #student-info {
+      background: var(--white);
+      padding: 1rem;
+      border-radius: 15px;
+      box-shadow: 0 10px 30px rgba(0, 0, 0, 0.08);
+      display: grid;
+      grid-template-columns: repeat(auto-fit, minmax(150px, 1fr));
+      gap: 1rem;
+      margin: 1rem 0;
+    }
+    .info-card {
+      text-align: center;
+      padding: 1rem;
+      border-radius: 10px;
+      background: var(--light-gray);
+      border: 2px solid var(--primary);
+    }
+    .info-card h3 {
+      font-size: 1rem;
+      color: var(--secondary);
+      margin-bottom: 0.5rem;
+    }
+    .info-card p {
+      font-size: 1.2rem;
+      font-weight: 600;
+      color: var(--primary);
+    }
+    #teacher{
+      color: #ffffff;
+    }
+    .grade-distribution {
+      background: var(--white);
+      padding: 1rem;
+      border-radius: 15px;
+      box-shadow: 0 10px 30px rgba(0, 0, 0, 0.08);
+      margin: 1rem 0;
+    }
+    .grade-distribution h3 {
+      font-size: 1.2rem;
+      color: var(--primary);
+      margin-bottom: 0.5rem;
+    }
+    .grade-distribution .badge {
+      display: inline-block;
+      padding: 0.5rem 1rem;
+      margin-right: 0.5rem;
+      border-radius: 20px;
+      color: black;
+      font-weight: bold;
+    }
+    .grade-distribution .badge.success {
+      background-color: var(--success);
+    }
+    .grade-distribution .badge.warning {
+      background-color: var(--warning);
+    }
+    .grade-distribution .badge.info {
+      background-color: var(--info);
+    }
+    .grade-distribution .badge.accent {
+      background-color: var(--accent);
+    }
+    .grade-distribution .badge.danger {
+      background-color: var(--danger);
+    }
+    .subject-marks {
+      display: flex;
+      flex-wrap: wrap;
+      gap: 0.5rem;
+      margin-top: 1rem;
+    }
+    
+    .subject-details {
+      display: flex;
+      flex-direction: column;
+      gap: 0.5rem;
+      margin-top: 1rem;
+    }
+    .subject-details .badge {
+      display: inline-block;
+      padding: 0.5rem 1rem;
+      border-radius: 20px;
+      font-weight: bold;
+    }
+    footer {
+      text-align: center;
+      padding: 1rem;
+      background: var(--white);
+      color: var(--secondary);
+      margin-top: 2rem;
+      box-shadow: 0 -4px 15px rgba(0, 0, 0, 0.1);
+    }
+    @media (min-width: 768px) {
+      header h1 { font-size: 2.5rem; }
+      #admission-number { font-size: 1.1rem; }
+      #search-btn { font-size: 1.1rem; }
+      .info-card { padding: 1.5rem; }
+    }
+    #rotate-message {
+      position: fixed;
+      bottom: 20px;
+      left: 50%;
+      transform: translateX(-50%);
+      background-color: rgba(0, 0, 0, 0.7);
+      color: white;
+      padding: 10px 20px;
+      border-radius: 20px;
+      z-index: 1000;
+    }
+    #legend {
+      position: absolute;
+      top: 222px;
+      right: 15px;
+      background-color: rgba(255, 255, 255, 0.8);
+      padding: 5px;
+      border-radius: 5px;
+      font-size: 0.8rem;
+      display: none; /* Initially hide the legend */
+    }
+    #legend div {
+      display: flex;
+      align-items: center;
+      margin-bottom: 5px;
+    }
+    #legend .color-box {
+      width: 15px;
+      height: 15px;
+      margin-right: 5px;
+    }
+  </style>
+</head>
+<body>
+  <header>
+    <h1>MCG Grade 10C - 2024 3rd Term Test E-Report</h1>
+    <p id="teacher">Class Teacher: Mrs. Bimba Lamahewa
+    </p>
+  </header>
+  <main>
+    <section id="search-section">
+      <div class="search-container">
+        <img src="https://i.ibb.co/1mkrZtL/10C.jpg" id="teacher-photo" alt="Teacher Image">
+        <div style="display: flex; flex-direction: column; gap: 1rem;">
+          <input type="text" id="admission-number" placeholder="Enter Admission Number...">
+          <button id="search-btn">
+            <i class="fas fa-chart-line"></i> Generate Report
+          </button>
+        </div>
+        <div id="legend">
+          <div><span class="color-box" style="background-color: var(--success);"></span>A (75-100)</div>
+          <div><span class="color-box" style="background-color: var(--warning);"></span>B (65-74)</div>
+          <div><span class="color-box" style="background-color: var(--info);"></span>C (50-64)</div>
+          <div><span class="color-box" style="background-color: var(--accent);"></span>S (35-49)</div>
+          <div><span class="color-box" style="background-color: var(--danger);"></span>W (Below 35)</div>
+        </div>
+      </div>
+    </section>
+    <section id="report-section">
+      <div id="chart-container">
+        <canvas id="marks-chart"></canvas>
+      </div>
+      <div id="student-info">
+        <div class="info-card">
+          <h3><i class="fas fa-user-graduate"></i> Student Name</h3>
+          <p id="student-name">-</p>
+        </div>
+        <div class="info-card">
+          <h3><i class="fas fa-trophy"></i> Total Marks</h3>
+          <p id="total-marks-display">-</p>
+        </div>
+        <div class="info-card">
+          <h3><i class="fas fa-medal"></i> Current Rank</h3>
+          <p id="place-rank">-</p>
+        </div>
+        <div class="info-card">
+          <h3><i class="fas fa-percent"></i> Average Score</h3>
+          <p id="average-marks">-</p>
+        </div>
+      </div>
+      <div class="grade-distribution">
+        <h3>Grade Distribution</h3>
+        <div id="grade-distribution"></div>
+      </div>
+      <div class="subject-details" id="subject-details"></div>
+    </section>
+  </main>
+  <footer>
+    <p>Design By DBMS - Thisum 2025 ©</p>
+  </footer>
+  <div id="rotate-message">
+    <img src="https://i.ibb.co/mFTwkmd4/rotate-2313593.png" alt="Rotate Logo" id="rotate-logo">
+    Rotate phone for best view 
+  </div> 
+  <script src="https://cdn.jsdelivr.net/npm/chart.js"></script>
+  <script src="https://cdn.jsdelivr.net/npm/chartjs-plugin-annotation@2.0.1"></script>
+  <script>
+    const studentsData = {
+    "6664": {
+    "name": "R.B. GUNASEKARA",
+    "place": 21,
+    "marks": [59, 70, 67, 73, 70, 63, 71, 65, 58],
+    "subjects": ["Buddhism", "Sinhala", "Maths", "Science", "English", "History", "OPT 1", "OPT 2", "OPT 3"]
+  },
+  "6680": {
+    "name": "K.A.NAVINDU SIWHAS",
+    "place": 10,
+    "marks": [75, 85, 86, 73, 84, 73, 75, 92, 75],
+    "subjects": ["Buddhism", "Sinhala", "Maths", "Science", "English", "History", "OPT 1", "OPT 2", "OPT 3"]
+  },
+  "6686": {
+    "name": "K.M.KALANA SANDEEPA",
+    "place": 26,
+    "marks": [62, 59, 53, 61, 61, 53, 82, 66, 66],
+    "subjects": ["Buddhism", "Sinhala", "Maths", "Science", "English", "History", "OPT 1", "OPT 2", "OPT 3"]
+  },
+  "6690": {
+    "name": "U.A.HASOD HIMAKARA",
+    "place": 18,
+    "marks": [69, 76, 63, 66, 68, 72, 65, 80, 60],
+    "subjects": ["Buddhism", "Sinhala", "Maths", "Science", "English", "History", "OPT 1", "OPT 2", "OPT 3"]
+  },
+  "6697": {
+    "name": "W.D.ADEEPA ESHAN",
+    "place": 40,
+    "marks": [26, 63, 0, 48, 50, 54, 51, 56, 45],
+    "subjects": ["Buddhism", "Sinhala", "Maths", "Science", "English", "History", "OPT 1", "OPT 2", "OPT 3"]
+  },
+  "6699": {
+    "name": "A.J.ABHIMAN JAYASINGHE",
+    "place": 17,
+    "marks": [78, 73, 40, 54, 85, 69, 93, 54, 74],
+    "subjects": ["Buddhism", "Sinhala", "Maths", "Science", "English", "History", "OPT 1", "OPT 2", "OPT 3"]
+  },
+  "6714": {
+    "name": "D.CHARUKA HETTIWATTA",
+    "place": 49,
+    "marks": [47, 31, 0, 0, 43, 53, 51, 17, 33],
+    "subjects": ["Buddhism", "Sinhala", "Maths", "Science", "English", "History", "OPT 1", "OPT 2", "OPT 3"]
+  },
+  "6729": {
+    "name": "K.G. SAJANA KITHMINA",
+    "place": 12,
+    "marks": [76, 68, 88, 81, 65, 74, 97, 67, 81],
+    "subjects": ["Buddhism", "Sinhala", "Maths", "Science", "English", "History", "OPT 1", "OPT 2", "OPT 3"]
+  },
+  "6732": {
+    "name": "M.M. DANINDU DILHARA",
+    "place": 42,
+    "marks": [54, 49, 5, 41, 45, 50, 40, 35, 51],
+    "subjects": ["Buddhism", "Sinhala", "Maths", "Science", "English", "History", "OPT 1", "OPT 2", "OPT 3"]
+  },
+  "6738": {
+    "name": "K.J. UDUGAMPOLA",
+    "place": 20,
+    "marks": [55, 72, 70, 59, 83, 66, 56, 69, 69],
+    "subjects": ["Buddhism", "Sinhala", "Maths", "Science", "English", "History", "OPT 1", "OPT 2", "OPT 3"]
+  },
+  "6739": {
+    "name": "G.K. DIHIRA YUGEETH",
+    "place": 43,
+    "marks": [20, 43, 9, 54, 45, 60, 25, 53, 56],
+    "subjects": ["Buddhism", "Sinhala", "Maths", "Science", "English", "History", "OPT 1", "OPT 2", "OPT 3"]
+  },
+  "6742": {
+    "name": "A.G.UDUPILAGE",
+    "place": 47,
+    "marks": [27, 36, 8, 48, 60, 39, 50, 10, 52],
+    "subjects": ["Buddhism", "Sinhala", "Maths", "Science", "English", "History", "OPT 1", "OPT 2", "OPT 3"]
+  },
+  "6753": {
+    "name": "W.G.YALINDU NETHSARA",
+    "place": 50,
+    "marks": [52, 0, 31, 39, 49, 0, 0, 0, 0],
+    "subjects": ["Buddhism", "Sinhala", "Maths", "Science", "English", "History", "OPT 1", "OPT 2", "OPT 3"]
+  },
+  "6757": {
+    "name": "M.WATHSALA HEWAGAMA",
+    "place": 15,
+    "marks": [65, 74, 57, 66, 82, 67, 79, 76, 78],
+    "subjects": ["Buddhism", "Sinhala", "Maths", "Science", "English", "History", "OPT 1", "OPT 2", "OPT 3"]
+  },
+  "6758": {
+    "name": "S.A.S. ALAHAKOON",
+    "place": 32,
+    "marks": [68, 60, 31, 49, 67, 44, 59, 60, 60],
+    "subjects": ["Buddhism", "Sinhala", "Maths", "Science", "English", "History", "OPT 1", "OPT 2", "OPT 3"]
+  },
+  "6767": {
+    "name": "A.MANULA SANDIL",
+    "place": 25,
+    "marks": [48, 74, 44, 53, 56, 63, 70, 78, 79],
+    "subjects": ["Buddhism", "Sinhala", "Maths", "Science", "English", "History", "OPT 1", "OPT 2", "OPT 3"]
+  },
+  "6779": {
+    "name": "Y.R. SAMARAWEERAARACHCHI",
+    "place": 2,
+    "marks": [89, 92, 95, 91, 85, 82, 99, 92, 97],
+    "subjects": ["Buddhism", "Sinhala", "Maths", "Science", "English", "History", "OPT 1", "OPT 2", "OPT 3"]
+  },
+  "6792": {
+    "name": "D.L.B.T. THUSARAKA",
+    "place": 23,
+    "marks": [57, 74, 79, 50, 74, 51, 73, 66, 67],
+    "subjects": ["Buddhism", "Sinhala", "Maths", "Science", "English", "History", "OPT 1", "OPT 2", "OPT 3"]
+  },
+  "6794": {
+    "name": "L.N.M. MENDAKA",
+    "place": 31,
+    "marks": [64, 55, 49, 44, 53, 73, 54, 38, 71],
+    "subjects": ["Buddhism", "Sinhala", "Maths", "Science", "English", "History", "OPT 1", "OPT 2", "OPT 3"]
+  },
+  "6799": {
+    "name": "H.G.RITHIRA HANDISU",
+    "place": 19,
+    "marks": [72, 77, 41, 61, 53, 82, 71, 81, 65],
+    "subjects": ["Buddhism", "Sinhala", "Maths", "Science", "English", "History", "OPT 1", "OPT 2", "OPT 3"]
+  },
+  "6804": {
+    "name": "H.AMOD INDUPAMA",
+    "place": 37,
+    "marks": [52, 44, 50, 42, 39, 76, 42, 50, 51],
+    "subjects": ["Buddhism", "Sinhala", "Maths", "Science", "English", "History", "OPT 1", "OPT 2", "OPT 3"]
+  },
+  "6808": {
+    "name": "A.K.ASHEN SHAVIDU",
+    "place": 8,
+    "marks": [78, 83, 82, 95, 72, 87, 80, 84, 80],
+    "subjects": ["Buddhism", "Sinhala", "Maths", "Science", "English", "History", "OPT 1", "OPT 2", "OPT 3"]
+  },
+  "6823": {
+    "name": "B.J.A. JANITH CHATHUMINA",
+    "place": 48,
+    "marks": [44, 39, 7, 33, 30, 24, 47, 54, 49],
+    "subjects": ["Buddhism", "Sinhala", "Maths", "Science", "English", "History", "OPT 1", "OPT 2", "OPT 3"]
+  },
+  "6825": {
+    "name": "N.V.R. VIDARSHANA",
+    "place": 38,
+    "marks": [52, 53, 16, 53, 45, 42, 65, 56, 54],
+    "subjects": ["Buddhism", "Sinhala", "Maths", "Science", "English", "History", "OPT 1", "OPT 2", "OPT 3"]
+  },
+  "6828": {
+    "name": "G.K.A. SAHANSITH",
+    "place": 41,
+    "marks": [46, 55, 11, 54, 48, 41, 45, 37, 36],
+    "subjects": ["Buddhism", "Sinhala", "Maths", "Science", "English", "History", "OPT 1", "OPT 2", "OPT 3"]
+  },
+  "6831": {
+    "name": "K.M.D.KULARATHNA",
+    "place": 35,
+    "marks": [50, 47, 18, 43, 58, 55, 82, 0, 44],
+    "subjects": ["Buddhism", "Sinhala", "Maths", "Science", "English", "History", "OPT 1", "OPT 2", "OPT 3"]
+  },
+  "6844": {
+    "name": "K.H.RASHEEN OSHADHA",
+    "place": 34,
+    "marks": [40, 64, 36, 52, 58, 53, 82, 53, 30],
+    "subjects": ["Buddhism", "Sinhala", "Maths", "Science", "English", "History", "OPT 1", "OPT 2", "OPT 3"]
+  },
+  "6845": {
+    "name": "P.H.VIMUKTHI DENUWAN",
+    "place": 46,
+    "marks": [28, 59, 19, 43, 48, 54, 31, 41, 21],
+    "subjects": ["Buddhism", "Sinhala", "Maths", "Science", "English", "History", "OPT 1", "OPT 2", "OPT 3"]
+  },
+  "6846": {
+    "name": "W.S. THISUN DILSARA",
+    "place": 45,
+    "marks": [47, 46, 36, 54, 53, 56, 26, 7, 26],
+    "subjects": ["Buddhism", "Sinhala", "Maths", "Science", "English", "History", "OPT 1", "OPT 2", "OPT 3"]
+  },
+  "6921": {
+    "name": "L.G.OKINDU WATHMIRA",
+    "place": 4,
+    "marks": [98, 89, 61, 73, 89, 84, 98, 98, 85],
+    "subjects": ["Buddhism", "Sinhala", "Maths", "Science", "English", "History", "OPT 1", "OPT 2", "OPT 3"]
+  },
+  "8420": {
+    "name": "W.D. GANGUL KETHAKA",
+    "place": 30,
+    "marks": [59, 55, 33, 67, 53, 59, 61, 48, 67],
+    "subjects": ["Buddhism", "Sinhala", "Maths", "Science", "English", "History", "OPT 1", "OPT 2", "OPT 3"]
+  },
+  "8972": {
+    "name": "K.K. NETHINDU THAMINDA",
+    "place": 9,
+    "marks": [67, 71, 92, 91, 76, 72, 88, 82, 80],
+    "subjects": ["Buddhism", "Sinhala", "Maths", "Science", "English", "History", "OPT 1", "OPT 2", "OPT 3"]
+  },
+  "8974": {
+    "name": "B.K.M. MAHIMA KUSHAN",
+    "place": 36,
+    "marks": [50, 67, 48, 53, 69, 59, 48, 27, 29],
+    "subjects": ["Buddhism", "Sinhala", "Maths", "Science", "English", "History", "OPT 1", "OPT 2", "OPT 3"]
+  },
+  "8981": {
+    "name": "N.A.C.H. WIJENAYAKA",
+    "place": 24,
+    "marks": [66, 68, 60, 67, 40, 66, 82, 67, 63],
+    "subjects": ["Buddhism", "Sinhala", "Maths", "Science", "English", "History", "OPT 1", "OPT 2", "OPT 3"]
+  },
+  "8984": {
+    "name": "H.P.CHANUKA SENEVIRATHNA",
+    "place": 28,
+    "marks": [62, 75, 43, 38, 61, 59, 70, 47, 0],
+    "subjects": ["Buddhism", "Sinhala", "Maths", "Science", "English", "History", "OPT 1", "OPT 2", "OPT 3"]
+  },
+  "8989": {
+    "name": "M.D.RANIDU PRAMOD",
+    "place": 7,
+    "marks": [76, 91, 95, 89, 69, 85, 81, 72, 0],
+    "subjects": ["Buddhism", "Sinhala", "Maths", "Science", "English", "History", "OPT 1", "OPT 2", "OPT 3"]
+  },
+  "8993": {
+    "name": "D.M.THISUM JALITHA",
+    "place": 1,
+    "marks": [96, 90, 95, 93, 83, 92, 96, 98, 98],
+    "subjects": ["Buddhism", "Sinhala", "Maths", "Science", "English", "History", "OPT 1", "OPT 2", "OPT 3"]
+  },
+  "8994": {
+    "name": "D.G. NADITH NETHSARA",
+    "place": 11,
+    "marks": [61, 80, 89, 85, 67, 86, 95, 69, 76],
+    "subjects": ["Buddhism", "Sinhala", "Maths", "Science", "English", "History", "OPT 1", "OPT 2", "OPT 3"]
+  },
+  "8997": {
+    "name": "W.D. MADHUKA SHYAMAL",
+    "place": 14,
+    "marks": [70, 77, 75, 76, 65, 79, 77, 72, 60],
+    "subjects": ["Buddhism", "Sinhala", "Maths", "Science", "English", "History", "OPT 1", "OPT 2", "OPT 3"]
+  },
+ 
+  "9004": {
+    "name": "I.A. CHAMINDU DESHAN",
+    "place": 27,
+    "marks": [56, 58, 40, 70, 59, 61, 54, 0, 73],
+    "subjects": ["Buddhism", "Sinhala", "Maths", "Science", "English", "History", "OPT 1", "OPT 2", "OPT 3"]
+  },
+  "9006": {
+    "name": "R.H.A.R. HANSITHA",
+    "place": 44,
+    "marks": [66, 0, 59, 67, 92, 0, 0, 80, 0],
+    "subjects": ["Buddhism", "Sinhala", "Maths", "Science", "English", "History", "OPT 1", "OPT 2", "OPT 3"]
+  },
+  "9019": {
+    "name": "W.JANITH NIMSARA",
+    "place": 29,
+    "marks": [31, 69, 67, 36, 56, 70, 68, 48, 67],
+    "subjects": ["Buddhism", "Sinhala", "Maths", "Science", "English", "History", "OPT 1", "OPT 2", "OPT 3"]
+  },
+  "9020": {
+    "name": "A.I.WITHANAWASAM",
+    "place": 13,
+    "marks": [76, 80, 78, 71, 87, 70, 84, 34, 83],
+    "subjects": ["Buddhism", "Sinhala", "Maths", "Science", "English", "History", "OPT 1", "OPT 2", "OPT 3"]
+  },
+  "9040": {
+    "name": "G.K. THASITH THANUWARA",
+    "place": 3,
+    "marks": [87, 89, 93, 88, 81, 94, 96, 98, 89],
+    "subjects": ["Buddhism", "Sinhala", "Maths", "Science", "English", "History", "OPT 1", "OPT 2", "OPT 3"]
+  },
+  "9241": {
+    "name": "L.YASHOD LASAL",
+    "place": 6,
+    "marks": [93, 75, 88, 86, 84, 81, 83, 76, 83],
+    "subjects": ["Buddhism", "Sinhala", "Maths", "Science", "English", "History", "OPT 1", "OPT 2", "OPT 3"]
+  },
+  "9246": {
+    "name": "E.D. LOSITH PABASARA",
+    "place": 33,
+    "marks": [56, 57, 42, 74, 70, 67, 16, 0, 33],
+    "subjects": ["Buddhism", "Sinhala", "Maths", "Science", "English", "History", "OPT 1", "OPT 2", "OPT 3"]
+  },
+  "9782": {
+    "name": "M.G.S. SITHUMJITH",
+    "place": 5,
+    "marks": [83, 89, 90, 82, 79, 92, 86, 76, 80],
+    "subjects": ["Buddhism", "Sinhala", "Maths", "Science", "English", "History", "OPT 1", "OPT 2", "OPT 3"]
+  },
+  "9750": {
+    "name": "N.D. WANNIARACHCHI",
+    "place": 16,
+    "marks": [75, 86, 57, 73, 67, 63, 79, 68, 69],
+    "subjects": ["Buddhism", "Sinhala", "Maths", "Science", "English", "History", "OPT 1", "OPT 2", "OPT 3"]
+  },
+  
+  "10523": {
+    "name": "W.BINUKA RACHINTHA",
+    "place": 22,
+    "marks": [75, 73, 37, 60, 71, 85, 65, 65, 0],
+    "subjects": ["Buddhism", "Sinhala ", "Maths", "Science", "English", "History", "OPT 1", "OPT 2", "OPT 3"]
+  },
+  "11115": {
+    "name": "R.W. SAYURA DINETHMA",
+    "place": 39,
+    "marks": [41, 56, 25, 43, 71, 41, 30, 58, 0],
+    "subjects": ["Buddhism", "Sinhala ", "Maths", "Science", "English", "History", "OPT 1", "OPT 2", "OPT 3"]
+  }
+    };
+
+    document.getElementById("search-btn").addEventListener("click", searchStudent);
+    document.getElementById("admission-number").addEventListener("keypress", (e) => {
+      if (e.key === "Enter") searchStudent();
+    });
+
+    function searchStudent() {
+      const admissionNumber = document.getElementById("admission-number").value;
+      const student = studentsData[admissionNumber];
+      if (student) {
+        const totalMarks = student.marks.reduce((a, b) => a + b, 0);
+        const averageMarks = (totalMarks / student.marks.length).toFixed(2);
+        const totalStudents = Object.keys(studentsData).length;
+        document.getElementById("student-name").textContent = student.name;
+        document.getElementById("total-marks-display").textContent = totalMarks;
+        document.getElementById("place-rank").textContent = `#${student.place} (out of ${totalStudents})`;
+        document.getElementById("average-marks").textContent = `${averageMarks}%`;
+        initChart(student);
+        updateGradeDistribution(student);
+        updateSubjectDetails(student);
+        document.getElementById("report-section").style.display = "block";
+        document.getElementById("legend").style.display = "block"; // Show the legend
+      } else {
+        alert("Student not found! Please check admission number.");
+        document.getElementById("legend").style.display = "none"; // Hide the legend if student not found
+      }
+    }
+
+    function initChart(student) {
+      const ctx = document.getElementById('marks-chart').getContext('2d');
+      const isMobile = window.innerWidth <= 768;
+
+      // Retrieve CSS variables properly
+      const styles = getComputedStyle(document.documentElement);
+      const successColor = styles.getPropertyValue('--success').trim();
+      const warningColor = styles.getPropertyValue('--warning').trim();
+      const infoColor = styles.getPropertyValue('--info').trim();
+      const accentColor = styles.getPropertyValue('--accent').trim();
+      const dangerColor = styles.getPropertyValue('--danger').trim();
+
+      if (window.myChart) window.myChart.destroy();
+      window.myChart = new Chart(ctx, {
+        type: 'bar',
+        data: {
+          labels: student.subjects.map((subject, index) => `${subject} (${student.marks[index]})`),
+          datasets: [{
+            data: student.marks,
+            backgroundColor: student.marks.map(m => 
+              m >= 75 ? successColor : 
+              m >= 65 ? warningColor : 
+              m >= 50 ? infoColor : 
+              m >= 35 ? accentColor : dangerColor
+            ),
+            borderColor: '#2c3e50',
+            borderWidth: 2,
+            borderRadius: 5
+          }]
+        },
+        options: {
+          responsive: true,
+          maintainAspectRatio: false,
+          scales: {
+            y: {
+              beginAtZero: true,
+              max: 100,
+              grid: { color: '#dfe6e9' },
+              ticks: { color: '#2c3e50', font: { size: isMobile ? 12 : 14 } }
+            },
+            x: {
+              grid: { display: false },
+              ticks: {
+                color: '#2c3e50',
+                font: { size: isMobile ? 10 : 12 },
+                autoSkip: false,
+                maxRotation: isMobile ? 90 : 0,
+                minRotation: isMobile ? 90 : 0
+              }
+            }
+          },
+          plugins: {
+            legend: { display: false },
+            annotation: {
+              annotations: {
+                passLine: {
+                  type: 'line',
+                  yMin: 35,
+                  yMax: 35,
+                  borderColor: '#e74c3c',
+                  borderWidth: 3,
+                  borderDash: [5, 3],
+                  label: {
+                    content: 'Pass (35)',
+                    display: true,
+                    position: 'end',
+                    backgroundColor: '#e74c3c',
+                    color: 'white'
+                  }
+                },
+                distinctionLine: {
+                  type: 'line',
+                  yMin: 75,
+                  yMax: 75,
+                  borderColor: '#FFD700',
+                  borderWidth: 3,
+                  borderDash: [5, 3],
+                  label: {
+                    content: 'Distinction (75)',
+                    display: true,
+                    position: 'end',
+                    backgroundColor: '#FFD700',
+                    color: '#2c3e50'
+                  }
+                }
+              }
+            }
+          }
+        }
+      });
+    }
+
+    function updateGradeDistribution(student) {
+      const gradeCounts = { A: 0, B: 0, C: 0, S: 0, W: 0 };
+      student.marks.forEach(mark => {
+        if (mark >= 75) gradeCounts.A++;
+        else if (mark >= 65) gradeCounts.B++;
+        else if (mark >= 50) gradeCounts.C++;
+        else if (mark >= 35) gradeCounts.S++;
+        else gradeCounts.W++;
+      });
+      const gradeDistributionDiv = document.getElementById("grade-distribution");
+      gradeDistributionDiv.innerHTML = `
+        ${gradeCounts.A > 0 ? `<span class="badge success">A: ${gradeCounts.A}</span>` : ''}
+        ${gradeCounts.B > 0 ? `<span class="badge warning">B: ${gradeCounts.B}</span>` : ''}
+        ${gradeCounts.C > 0 ? `<span class="badge info">C: ${gradeCounts.C}</span>` : ''}
+        ${gradeCounts.S > 0 ? `<span class="badge accent">S: ${gradeCounts.S}</span>` : ''}
+        ${gradeCounts.W > 0 ? `<span class="badge danger">W: ${gradeCounts.W}</span>` : ''}
+      `;
+    }
+
+    function updateSubjectDetails(student) {
+      const subjectDetailsDiv = document.getElementById("subject-details");
+      subjectDetailsDiv.innerHTML = "";
+      student.marks.forEach((mark, index) => {
+        let badgeClass = '';
+        if (mark >= 75) badgeClass = 'success'; // A
+        else if (mark >= 65) badgeClass = 'warning'; // B
+        else if (mark >= 50) badgeClass = 'info'; // C
+        else if (mark >= 35) badgeClass = 'accent'; // S
+        else badgeClass = 'danger'; // W
+        const subjectBadge = document.createElement("span");
+        subjectBadge.className = `badge ${badgeClass}`;
+        subjectBadge.textContent = `${student.subjects[index]}: ${mark}`;
+        subjectDetailsDiv.appendChild(subjectBadge);
+      });
+    }
+  </script>
+</body>
+</html>
